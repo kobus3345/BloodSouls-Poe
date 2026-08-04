@@ -8,6 +8,10 @@ import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.math.Vector2
+//Here i add 2 imports so that i may use the joystick i created
+import com.badlogic.gdx.scenes.scene2d.Stage
+import com.badlogic.gdx.utils.viewport.ScreenViewport
+import com.github.czyzby.autumn.mvc.stereotype.preference.StageViewport
 
 class MainGame : ApplicationAdapter() {
     private lateinit var batch: SpriteBatch //I make use of this to draw textures on screen.
@@ -15,6 +19,9 @@ class MainGame : ApplicationAdapter() {
     private lateinit var idleAnim: Animation<TextureRegion> // This we use for idle animations.
     private lateinit var playerPosition: Vector2 // This allows us to keep track of where the knight is drawn.
     private var stateTimer = 0f //We use this to keep track of timers for animation playback
+
+    private lateinit var stage: Stage
+    private lateinit var joystick: Joystick
 
     // We use the following block of code to initialize the spritesheet.
     //We then slice the sheet in to smaller sheets sized 128x306 pixels
@@ -35,6 +42,11 @@ class MainGame : ApplicationAdapter() {
         idleAnim = Animation(0.15f, com.badlogic.gdx.utils.Array<TextureRegion>().apply {
             for (i in 0..2) add(tmpRegions[0][i])
         }, Animation.PlayMode.LOOP)
+
+        stage = Stage(ScreenViewport())
+        Gdx.input.inputProcessor = stage
+        val joystickX = Gdx.graphics.width - 200 - 60f
+        joystick = Joystick(stage,joystickX,50f,200f)
     }
 
     //The block of code below we use to clear the screen and make it dark gray for now.
@@ -49,11 +61,19 @@ class MainGame : ApplicationAdapter() {
         batch.begin()
         batch.draw(currentFrame, playerPosition.x, playerPosition.y, 128f, 306f)
         batch.end()
-    }
 
-    // This cleans up hardware resources when the game closes.
+        stage.act(Gdx.graphics.deltaTime)
+        stage.draw()
+
+
+        }
+    override fun resize(width: Int, height:Int) {
+        stage.viewport.update(width, height)
+    }
+        // This cleans up hardware resources when the game closes.
     override fun dispose() {
         batch.dispose()
         spriteSheet.dispose()
     }
+
 }
