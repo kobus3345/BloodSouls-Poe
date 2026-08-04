@@ -1,5 +1,6 @@
 package com.BloodSouls.Souls.lwjgl3;
 //This file was auto generated when i created the project file with GDX
+import com.BloodSouls.Souls.BloodSoulsGame;
 import com.BloodSouls.Souls.MainGame;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
@@ -14,7 +15,7 @@ public class Lwjgl3Launcher {
     private static Lwjgl3Application createApplication() {
         //I had to come in there though and change the file that loaded when the program started
         // The original line was initialize(new Main(), configuration);
-        return new Lwjgl3Application(new MainGame(), getDefaultConfiguration());
+        return new Lwjgl3Application(new BloodSoulsGame(), getDefaultConfiguration());
     }
 
     private static Lwjgl3ApplicationConfiguration getDefaultConfiguration() {
