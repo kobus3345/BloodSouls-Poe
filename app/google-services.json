@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "808527023657",
+    "project_id": "sso-3a0db",
+    "storage_bucket": "sso-3a0db.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808527023657:android:65d11ceb53ba9ab2f15638",
+        "android_client_info": {
+          "package_name": "com.example.googlesso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808527023657-aqqmsre9r0j0vlapca0tvlcctfvq4dkk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.googlesso",
+            "certificate_hash": "1889eae0f117dd1ae5a59abe5fc317bed47b90af"
+          }
+        },
+        {
+          "client_id": "808527023657-u7ed4l84ogi5tt38qdg12p3fc79j153f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHLZDQ1djZUodQrMWcEorEADCeV4D2YpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808527023657-u7ed4l84ogi5tt38qdg12p3fc79j153f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
