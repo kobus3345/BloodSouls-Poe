@@ -1,0 +1,4 @@
+com.bloodsouls.game.test.app-androidTest-0 C:\Users\scott\AndroidStudioProjects\BloodSouls\app\build\generated\res\resValues\androidTest\debug
+com.bloodsouls.game.test.app-mergeDebugAndroidTestResources-1 C:\Users\scott\AndroidStudioProjects\BloodSouls\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.bloodsouls.game.test.app-mergeDebugAndroidTestResources-2 C:\Users\scott\AndroidStudioProjects\BloodSouls\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.bloodsouls.game.test.app-debugAndroidTest-3 C:\Users\scott\AndroidStudioProjects\BloodSouls\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

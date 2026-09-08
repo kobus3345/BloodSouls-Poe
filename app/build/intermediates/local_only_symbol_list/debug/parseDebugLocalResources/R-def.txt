@@ -1,0 +1,19 @@
+R_DEF: Internal format may change without notice
+local
+array com_google_android_gms_fonts_certs
+array com_google_android_gms_fonts_certs_dev
+array com_google_android_gms_fonts_certs_prod
+color blood_red
+color dark_red
+color deep_red
+color near_black
+color neon_red
+color skull_stroke
+color surface_black
+font cinzel
+font cinzel_decorative
+id bloodSoulsView
+id rootLayout
+layout activity_main
+string app_name
+style Theme.BloodSouls

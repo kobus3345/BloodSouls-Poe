@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\scott\\.gradle\\daemon\\8.9\\com.bloodsouls.game.app-debug-61:\\font_cinzel_decorative.xml.flat",
+        "source": "C:\\Users\\scott\\.gradle\\daemon\\8.9\\com.bloodsouls.game.app-main-63:\\font\\cinzel_decorative.xml"
+    },
+    {
+        "merged": "C:\\Users\\scott\\.gradle\\daemon\\8.9\\com.bloodsouls.game.app-debug-61:\\font_cinzel.xml.flat",
+        "source": "C:\\Users\\scott\\.gradle\\daemon\\8.9\\com.bloodsouls.game.app-main-63:\\font\\cinzel.xml"
+    },
+    {
+        "merged": "com.bloodsouls.game.app-debug-61:/layout_activity_main.xml.flat",
+        "source": "com.bloodsouls.game.app-main-63:/layout/activity_main.xml"
+    }
+]

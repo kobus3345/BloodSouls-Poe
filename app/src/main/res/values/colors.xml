@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <color name="neon_red">#FF1A1A</color>
+    <color name="blood_red">#CC0000</color>
+    <color name="dark_red">#8B0000</color>
+    <color name="deep_red">#5A0000</color>
+
+    <color name="near_black">#050505</color>
+    <color name="surface_black">#0A0000</color>
+
+    <color name="skull_stroke">#DD1111</color>
+
+</resources>

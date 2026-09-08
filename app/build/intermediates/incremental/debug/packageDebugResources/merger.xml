@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\scott\AndroidStudioProjects\BloodSouls\app\src\main\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\scott\AndroidStudioProjects\BloodSouls\app\src\main\res"><file name="cinzel" path="C:\Users\scott\AndroidStudioProjects\BloodSouls\app\src\main\res\font\cinzel.xml" qualifiers="" type="font"/><file name="cinzel_decorative" path="C:\Users\scott\AndroidStudioProjects\BloodSouls\app\src\main\res\font\cinzel_decorative.xml" qualifiers="" type="font"/><file path="C:\Users\scott\AndroidStudioProjects\BloodSouls\app\src\main\res\values\font_certs.xml" qualifiers=""><array name="com_google_android_gms_fonts_certs">
+        <item>@array/com_google_android_gms_fonts_certs_dev</item>
+        <item>@array/com_google_android_gms_fonts_certs_prod</item>
+    </array><string-array name="com_google_android_gms_fonts_certs_dev">
+        <item>
+            MIIEqDCCA5CgAwIBAgIJANWFuGx90071MA0GCSqGSIb3DQEBBAUAMIGUMQswCQYD
+            VQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZyYW5j
+            aXNjbzETMBEGA1UEChMKR29vZ2xlIEluYzEVMBMGA1UECxMMTW9iaWxlIFJvYm90
+            czEcMBoGA1UEAxMTcm9ib3RzLmFuZHJvaWQuY29t
+        </item>
+    </string-array><string-array name="com_google_android_gms_fonts_certs_prod">
+        <item>
+            MIIEQzCCAyugAwIBAgIJAMLgh0ZkSjCNMA0GCSqGSIb3DQEBBAUAMHQxCzAJBgNV
+            BAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBW
+            aWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4G
+            A1UEAxMHQW5kcm9pZA==
+        </item>
+    </string-array></file><file path="C:\Users\scott\AndroidStudioProjects\BloodSouls\app\src\main\res\values\strings.xml" qualifiers=""><string name="app_name">Blood Souls</string></file><file path="C:\Users\scott\AndroidStudioProjects\BloodSouls\app\src\main\res\values\themes.xml" qualifiers=""><style name="Theme.BloodSouls" parent="Theme.Material3.Dark.NoActionBar">
+
+        <item name="android:fontFamily">serif</item>
+
+        <item name="android:windowLightStatusBar">
+            false
+        </item>
+
+        <item name="android:statusBarColor">
+            @color/near_black
+        </item>
+
+        <item name="android:navigationBarColor">
+            @color/near_black
+        </item>
+
+        <item name="android:windowLightNavigationBar">
+            false
+        </item>
+
+        <item name="android:colorAccent">
+            @color/blood_red
+        </item>
+
+    </style></file><file name="activity_main" path="C:\Users\scott\AndroidStudioProjects\BloodSouls\app\src\main\res\layout\activity_main.xml" qualifiers="" type="layout"/><file path="C:\Users\scott\AndroidStudioProjects\BloodSouls\app\src\main\res\values\colors.xml" qualifiers=""><color name="neon_red">#FF1A1A</color><color name="blood_red">#CC0000</color><color name="dark_red">#8B0000</color><color name="deep_red">#5A0000</color><color name="near_black">#050505</color><color name="surface_black">#0A0000</color><color name="skull_stroke">#DD1111</color></file></source></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\scott\AndroidStudioProjects\BloodSouls\app\src\debug\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\scott\AndroidStudioProjects\BloodSouls\app\src\debug\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\scott\AndroidStudioProjects\BloodSouls\app\build\generated\res\resValues\debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated" generated-set="generated$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\scott\AndroidStudioProjects\BloodSouls\app\build\generated\res\resValues\debug"/></dataSet><mergedItems/></merger>
