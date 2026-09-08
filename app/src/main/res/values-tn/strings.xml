@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="subscribe">Ikwadise</string>
+    <string name="share">Abelana</string>
+    <string name="like">Ratana</string>
+    <string name="language_change_code">Khouto ya Phetolelo ya Puo</string>
+    <string name="translate_to_english">Fetolela go Sekgoa</string>
+    <string name="translate_to_afrikaans">Fetolela go Seafrikanse</string>
+    <string name="translate_to_xhosa">Fetolela go Xhosa</string>
+    <string name="translate_to_tswana">Fetolela go Setswana</string>
+    <string name="next">elandelayo</string>
+    <string name="language_test">Uvavanyo loLwimi</string>
+    <string name="on_different">KwiNtshona</string>
+    <string name="activity">Umsebenzi!!!</string>
+    <string name="back">Morago</string>
+</resources>

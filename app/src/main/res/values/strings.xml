@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name" translatable="false">Language Change</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="share">Share</string>
+    <string name="like">Like</string>
+    <string name="language_change_code">Language Change Code</string>
+    <string name="translate_to_english">Translate to English</string>
+    <string name="translate_to_afrikaans">Translate to Afrikaans</string>
+    <string name="translate_to_xhosa">Translate to Xhosa</string>
+    <string name="translate_to_tswana">Translate to Tswana</string>
+    <string name="next">next</string>
+    <string name="language_test">Language Test</string>
+    <string name="on_different">On Different</string>
+    <string name="activity">Activity!!!</string>
+    <string name="back">Back</string>
+</resources>

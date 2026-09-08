@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="subscribe">Inteken</string>
+    <string name="share">Deel</string>
+    <string name="like">Hou van</string>
+    <string name="language_change_code">Taalveranderingskode</string>
+    <string name="translate_to_english">Vertaal na Engels</string>
+    <string name="translate_to_afrikaans">Vertaal na Afrikaans</string>
+    <string name="translate_to_xhosa">Vertaal na Xhosa</string>
+    <string name="translate_to_tswana">Vertaal na Tswana</string>
+    <string name="next">volgende</string>
+    <string name="language_test">Taaltoets</string>
+    <string name="on_different">Op Verskillende</string>
+    <string name="activity">Aktiwiteit!!!</string>
+    <string name="back">Terug</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="subscribe">Bhalisa</string>
+    <string name="share">Yabelana</string>
+    <string name="like">Thanda</string>
+    <string name="language_change_code">Ikhowudi yoTshintsho loLwimi</string>
+    <string name="translate_to_english">Guqulela esiNgesi</string>
+    <string name="translate_to_afrikaans">Guqulela esiAfrikaans</string>
+    <string name="translate_to_xhosa">Guqulela esiXhosa</string>
+    <string name="translate_to_tswana">Guqulela esiTswana</string>
+    <string name="next">e e latelang</string>
+    <string name="language_test">Teko ya Puo</string>
+    <string name="on_different">Mo go Farologaneng</string>
+    <string name="activity">Tiro!!!</string>
+    <string name="back">Emva</string>
+</resources>
