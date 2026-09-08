@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="app_name">Blood Souls</string>
+
+    <string name="game_title">Blood
+Souls</string>
+
+    <string name="death_quote">"Death is only the beginning"</string>
+
+    <string name="version">VERSION 1.0.0
+© 2026 DARK FORGE STUDIOS</string>
+
+    <string name="new_game">New Game</string>
+    <string name="continue_game">Continue</string>
+    <string name="options">Options</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
+
+    <string name="return_text">← Return</string>
+
+    <string name="choose_burden">Choose your burden, Hollow One</string>
+
+    <string name="penitent">Penitent</string>
+    <string name="cursed">Cursed</string>
+    <string name="damned">Damned</string>
+
+    <string name="begin_journey">Begin Journey</string>
+
+    <string name="slot_one">Slot I</string>
+    <string name="slot_two">Slot II</string>
+    <string name="slot_three">Slot III</string>
+
+    <string name="forsaken_knight">The Forsaken Knight</string>
+    <string name="seraphel">Seraphel the Lost</string>
+    <string name="empty_slot">— Empty —</string>
+
+    <string name="save_one_details">Lv. 34 — The Ashen Wastes · 47h 23m</string>
+    <string name="save_two_details">Lv. 12 — Crimson Gate · 8h 55m</string>
+
+    <string name="music">Music</string>
+    <string name="sound_fx">Sound FX</string>
+
+    <string name="blood_splatter">Blood Splatter</string>
+
+    <string name="low">Low</string>
+    <string name="medium">Medium</string>
+    <string name="high">High</string>
+
+    <string name="language">Language</string>
+
+    <string name="english">English</string>
+    <string name="afrikaans">Afrikaans</string>
+    <string name="xhosa">Xhosa</string>
+    <string name="tswana">Tswana</string>
+
+    <string name="about_description">In a realm where death begets death,
+one soul dares to break the cycle
+of eternal damnation.</string>
+
+    <string name="about_footer">DARK FORGE STUDIOS
+VERSION 1.0.0
+© 2026 ALL RIGHTS RESERVED</string>
+
+    <string name="exit_game">Exit Game</string>
+
+    <string name="exit_message">Your suffering has not yet ended,
+Hollow One. Are you certain?</string>
+
+    <string name="stay_and_suffer">Stay and Suffer</string>
+    <string name="abandon_hope">Abandon All Hope</string>
+
+</resources>

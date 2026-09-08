@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="35dp">
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/bg_panel">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/continue_game"
+            android:textColor="@color/gold_parchment"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/return_continue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/return_text"
+            android:textColor="@color/gold_faded"
+            android:textSize="11sp"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/save_slot_1"
+            style="@style/SaveSlot">
+
+            <TextView
+                style="@style/SaveSlotNumber"
+                android:text="@string/slot_one" />
+
+            <TextView
+                style="@style/SaveName"
+                android:text="@string/forsaken_knight" />
+
+            <TextView
+                style="@style/SaveDetails"
+                android:text="@string/save_one_details" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/save_slot_2"
+            style="@style/SaveSlot">
+
+            <TextView
+                style="@style/SaveSlotNumber"
+                android:text="@string/slot_two" />
+
+            <TextView
+                style="@style/SaveName"
+                android:text="@string/seraphel" />
+
+            <TextView
+                style="@style/SaveDetails"
+                android:text="@string/save_two_details" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/SaveSlot">
+
+            <TextView
+                style="@style/SaveSlotNumber"
+                android:text="@string/slot_three" />
+
+            <TextView
+                style="@style/SaveEmpty"
+                android:text="@string/empty_slot" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

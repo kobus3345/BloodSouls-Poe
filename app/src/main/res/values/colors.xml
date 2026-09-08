@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <color name="blood_dark">#060008</color>
+    <color name="blood_deep">#0A0005</color>
+
+    <color name="blood_red">#8B0000</color>
+    <color name="blood_crimson">#CC1111</color>
+    <color name="blood_bright">#FF4444</color>
+
+    <color name="gold_parchment">#C8A97A</color>
+    <color name="gold_light">#E8C89A</color>
+    <color name="gold_faded">#8B7658</color>
+
+    <color name="rune_dark">#2A0010</color>
+    <color name="rune_glow">#6B3333</color>
+
+    <color name="black">#000000</color>
+
+</resources>

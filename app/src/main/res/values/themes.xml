@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <style
+        name="Theme.BloodSouls"
+        parent="Theme.Material3.Dark.NoActionBar">
+
+        <item name="android:fontFamily">serif</item>
+
+        <item name="android:windowBackground">
+            @color/blood_dark
+        </item>
+
+        <item name="android:colorAccent">
+            @color/blood_crimson
+        </item>
+
+        <item name="android:navigationBarColor">
+            @color/blood_dark
+        </item>
+
+        <item name="android:statusBarColor">
+            @color/blood_dark
+        </item>
+
+        <item name="android:windowLightStatusBar">
+            false
+        </item>
+
+    </style>
+
+    <style name="MenuButton">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+
+        <item name="android:textColor">@color/gold_parchment</item>
+        <item name="android:textSize">14sp</item>
+
+        <item name="android:gravity">center</item>
+
+        <item name="android:fontFamily">serif</item>
+
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+
+        <item name="android:background">@drawable/bg_button</item>
+
+    </style>
+
+    <style name="BloodButton">
+
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">48dp</item>
+
+        <item name="android:layout_marginTop">6dp</item>
+
+        <item name="android:textColor">@color/gold_parchment</item>
+        <item name="android:textSize">12sp</item>
+
+        <item name="android:background">@drawable/bg_button</item>
+
+        <item name="android:textAllCaps">true</item>
+
+        <item name="android:fontFamily">serif</item>
+
+    </style>
+
+    <style name="BloodPrimaryButton"
+        parent="Widget.Material3.Button">
+
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">48dp</item>
+
+        <item name="android:textColor">@color/blood_dark</item>
+        <item name="android:textSize">12sp</item>
+
+        <item name="android:background">@drawable/bg_selected</item>
+
+        <item name="android:textAllCaps">true</item>
+
+    </style>
+
+    <style name="SmallBloodButton">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">42dp</item>
+
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+
+        <item name="android:textColor">@color/gold_parchment</item>
+        <item name="android:textSize">11sp</item>
+
+        <item name="android:background">@drawable/bg_button</item>
+
+    </style>
+
+    <style name="OptionLabel">
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+
+        <item name="android:textColor">@color/gold_parchment</item>
+        <item name="android:textSize">12sp</item>
+
+        <item name="android:fontFamily">serif</item>
+
+    </style>
+
+    <style name="OptionTitle">
+
+        <item name="android:layout_width">280dp</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:layout_marginTop">18dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+
+        <item name="android:textColor">@color/gold_parchment</item>
+        <item name="android:textSize">12sp</item>
+
+    </style>
+
+    <style name="LanguageButton">
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">40dp</item>
+
+        <item name="android:layout_weight">1</item>
+
+        <item name="android:gravity">center</item>
+
+        <item name="android:textColor">@color/rune_glow</item>
+        <item name="android:textSize">8sp</item>
+
+        <item name="android:background">@drawable/bg_button</item>
+
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+
+    </style>
+
+    <style name="SaveSlot">
+
+        <item name="android:layout_width">280dp</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+
+        <item name="android:orientation">vertical</item>
+
+        <item name="android:padding">12dp</item>
+
+        <item name="android:background">@drawable/bg_button</item>
+
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+
+    </style>
+
+    <style name="SaveSlotNumber">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:textColor">@color/rune_glow</item>
+        <item name="android:textSize">9sp</item>
+
+    </style>
+
+    <style name="SaveName">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:textColor">@color/gold_parchment</item>
+        <item name="android:textSize">13sp</item>
+
+    </style>
+
+    <style name="SaveDetails">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:textColor">@color/rune_glow</item>
+        <item name="android:textSize">10sp</item>
+
+    </style>
+
+    <style name="SaveEmpty">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:textColor">@color/rune_dark</item>
+        <item name="android:textSize">13sp</item>
+
+    </style>
+
+</resources>
