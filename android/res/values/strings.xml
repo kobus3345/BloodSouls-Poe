@@ -33,7 +33,7 @@
   <string name="exit_abandon">ABANDON</string>
   <string name="player_login">PLAYER LOGIN</string>
   <string name="login_subtitle">Enter credentials or use Google SSO</string>
-  <string name="hint_email">Email or Username</string>
+  <string name="hint_email">Email</string>
   <string name="hint_password">Password</string>
   <string name="login_button">LOGIN</string>
   <string name="sign_in_google">G  SIGN IN WITH GOOGLE</string>

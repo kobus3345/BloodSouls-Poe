@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.FragmentActivity
 import com.BloodSouls.Souls.R
+import com.BloodSouls.Souls.databinding.ActivityMainBinding
 import com.badlogic.gdx.backends.android.AndroidFragmentApplication
 import com.darkforge.bloodsouls.net.ApiService
 import com.darkforge.bloodsouls.net.FirebaseAuthService
@@ -26,7 +27,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FirebaseAuth
 
 
 class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
@@ -40,6 +40,9 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
     private lateinit var settingsManager: SettingsManager
     private lateinit var progressManager: UserProgressManager
     private lateinit var googleSignInClient: GoogleSignInClient
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var databaseHelper: DatabaseHelper
 
     override fun exit() {
         Log.i(TAG, "LibGDX exit callback received.")
@@ -117,9 +120,12 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
         progressManager = UserProgressManager(this)
 
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
+        databaseHelper = DatabaseHelper(this)
+
 
         root = findViewById(R.id.blood_background)
         contentContainer = findViewById(R.id.screen_container)
@@ -182,6 +188,12 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
         contentContainer.removeAllViews()
     }
 
+    private fun loginDatabase(email: String, password: String): Boolean {
+        val result = databaseHelper.readUser(email, password)
+        Log.d(TAG, "Login database check: Email=$email Result=$result")
+        return result
+    }
+
     private fun setupLogin(view: View) {
         Log.d(TAG, "Setting up LOGIN screen UI handlers")
         val editEmail = view.findViewById<EditText>(R.id.edit_login_email)
@@ -196,39 +208,62 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
         linkGuest?.setOnClickListener { navigate(GameScreen.MENU) }
 
         btnLogin?.setOnClickListener {
-            val email = editEmail?.text?.toString()?.trim() ?: ""
-            val rawPassword = editPassword?.text?.toString() ?: ""
+            val email = editEmail.text.toString().trim()
+            val rawPassword = editPassword.text.toString()
             Log.i(TAG, "User clicked LOGIN for email: $email")
 
             if (email.isEmpty() || rawPassword.isEmpty()) {
-                Log.w(TAG, "Login validation failed: empty fields")
                 txtStatus?.visibility = View.VISIBLE
-                txtStatus?.text = "Please fill in all fields"
+                "Please fill in all fields".also { txtStatus?.text = it }
                 return@setOnClickListener
             }
 
             Log.d(TAG, "Hashing password using SHA-256 before authentication...")
             val hashedPassword = SecurityUtils.hashPassword(rawPassword)
 
+            if (!databaseHelper.userExists(email)) {
+                txtStatus?.visibility = View.VISIBLE
+                "User does not exist.".also { txtStatus?.text = it }
+                return@setOnClickListener
+            }
+
             txtStatus?.visibility = View.VISIBLE
-            txtStatus?.text = "Authenticating..."
+            "Authenticating...".also { txtStatus?.text = it }
 
             ApiService.loginUser(email, hashedPassword, object : ApiService.ApiCallback<String> {
-                override fun onSuccess(result: String) {
-                    val username = if (email.contains("@")) email.substringBefore("@") else email
-                    Log.i(TAG, "Login successful for user: $username (Token: $result)")
-                    settingsManager.loggedInUser = username
-                    settingsManager.authToken = result
+                    override fun onSuccess(result: String) {
+                        Log.d(TAG, "API LOGIN SUCCESS")
+                        val localUserExists = loginDatabase(email, hashedPassword)
 
-                    txtStatus?.text = "Login successful!"
-                    navigate(GameScreen.MENU)
-                }
+                        Log.d(TAG, "Local database check result = $localUserExists")
 
-                override fun onError(errorMessage: String) {
-                    Log.e(TAG, "Login error callback: $errorMessage")
-                    txtStatus?.text = "Login failed: $errorMessage"
-                }
-            })
+                        if (!localUserExists) {
+                            Log.w(TAG, "User not found locally")
+                            "Incorrect email or password".also { txtStatus?.text = it }
+                            return
+                        }
+                        val username = if (email.contains("@")) email.substringBefore("@") else email
+
+                        settingsManager.loggedInUser = username
+                        settingsManager.authToken = result
+                        "Login successful!".also { txtStatus?.text = it }
+                        navigate(GameScreen.MENU)
+                    }
+                    override fun onError(errorMessage: String) {
+                        Log.d(TAG, "API LOGIN FAILED")
+                        Log.e(TAG, "API Login Error: $errorMessage")
+                        val localLogin = loginDatabase(email, hashedPassword)
+                        Log.d(TAG, "Offline login result = $localLogin")
+                        if (localLogin) {
+                            val username = if (email.contains("@"))email.substringBefore("@") else email
+                            settingsManager.loggedInUser = username
+                            "Offline login successful!".also { txtStatus?.text = it }
+                            navigate(GameScreen.MENU)
+                        } else {
+                            "Incorrect email or password.".also { txtStatus?.text = it }
+                        }
+                    }
+                })
         }
 
         btnGoogleSso?.setOnClickListener {
@@ -244,6 +279,10 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
         }
     }
 
+    private fun registerDatabase(email: String, password: String): Boolean {
+        val insertRowId = databaseHelper.insertUser(email, password)
+        return insertRowId != -1L
+    }
     private fun setupRegister(view: View) {
         Log.d(TAG, "Setting up REGISTER screen UI handlers")
         val editEmail = view.findViewById<EditText>(R.id.edit_reg_email)
@@ -265,26 +304,32 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
             if (email.isEmpty() || rawPassword.isEmpty() || confirmPassword.isEmpty()) {
                 Log.w(TAG, "Registration validation failed: empty fields")
                 txtStatus?.visibility = View.VISIBLE
-                txtStatus?.text = "Please fill in all fields"
+                "Please fill in all fields".also { txtStatus?.text = it }
                 return@setOnClickListener
             }
-            else if(!email.matches(Regex("^[A-Za-z0-9+_.-]+$|^[A-Za-z0-9+_.-]+@(gmail\\.com|hotmail\\.com|yahoo\\.com)$"))){
+            else if(!email.matches(Regex("^[A-Za-z0-9+_.-]+@(gmail\\.com|hotmail\\.com|yahoo\\.com)$"))){
                 Log.w(TAG, "Registration validation failed: invalid input")
                 txtStatus?.visibility = View.VISIBLE
-                txtStatus?.text = "Please enter a valid username or email (gmail, hotmail, yahoo)"
+                "Please enter a valid email (gmail, hotmail, yahoo)".also { txtStatus?.text = it }
                 return@setOnClickListener
             }
             else if(!rawPassword.matches(Regex("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#\$%^&+=!]).{8,}$"))){
                 Log.w(TAG, "Registration validation failed: invalid input")
                 txtStatus?.visibility = View.VISIBLE
-                txtStatus?.text = "Password must be at least 8 characters, include uppercase, lowercase, digit, and special character"
+                "Password must be at least 8 characters, include uppercase, lowercase, digit, and special character".also { txtStatus?.text = it }
                 return@setOnClickListener
             }
 
             if (rawPassword != confirmPassword) {
                 Log.w(TAG, "Registration validation failed: password mismatch")
                 txtStatus?.visibility = View.VISIBLE
-                txtStatus?.text = "Passwords do not match"
+                "Passwords do not match".also { txtStatus?.text = it }
+                return@setOnClickListener
+            }
+
+            if (databaseHelper.userExists(email)) {
+                txtStatus?.visibility = View.VISIBLE
+                "User already exists".also { txtStatus?.text = it }
                 return@setOnClickListener
             }
 
@@ -292,23 +337,28 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
             val hashedPassword = SecurityUtils.hashPassword(rawPassword)
 
             txtStatus?.visibility = View.VISIBLE
-            txtStatus?.text = "Creating account..."
+            "Creating account...".also { txtStatus?.text = it }
 
             ApiService.registerUser(email, hashedPassword, object : ApiService.ApiCallback<String> {
                 override fun onSuccess(result: String) {
-                    val username = if (email.contains("@")) email.substringBefore("@") else email
+                    val username = if (email.contains("@"))email.substringBefore("@") else email
                     Log.i(TAG, "Account created successfully for user: $username (Token: $result)")
                     settingsManager.loggedInUser = username
                     settingsManager.authToken = result
 
-                    txtStatus?.text = "Account created!"
-                    navigate(GameScreen.MENU)
+                    val saved = registerDatabase(email, hashedPassword)
+
+                    if (saved) {
+                        txtStatus?.visibility = View.VISIBLE
+                        "Account created successfully!".also { txtStatus?.text = it }
+                        navigate(GameScreen.LOGIN)
+                    }
                 }
 
 
                 override fun onError(errorMessage: String) {
                     Log.e(TAG, "Registration error callback: $errorMessage")
-                    txtStatus?.text = "Registration failed: $errorMessage"
+                    "Registration failed: $errorMessage".also { txtStatus?.text = it }
                 }
             })
         }
