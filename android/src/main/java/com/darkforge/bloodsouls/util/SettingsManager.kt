@@ -60,6 +60,10 @@ class SettingsManager(context: Context) {
             prefs.edit().putString(KEY_AUTH_TOKEN, value).apply()
         }
 
+    var fontSize: Float
+        get() = prefs.getFloat("font_size", 14f)
+        set(value) = prefs.edit().putFloat("font_size", value).apply()
+
     fun isLoggedIn(): Boolean {
         val loggedIn = !loggedInUser.isNullOrEmpty()
         Log.d(TAG, "Checking login status: $loggedIn (user: $loggedInUser)")

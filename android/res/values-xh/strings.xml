@@ -44,4 +44,5 @@
   <string name="register_button">BHALISA AKHAWUNTI</string>
   <string name="back_to_login">[ BUYA KUKUNGENA ]</string>
   <string name="back">[ BUYA ]</string>
+    <string name="font_size">Ubungakanani beFonti</string>
 </resources>

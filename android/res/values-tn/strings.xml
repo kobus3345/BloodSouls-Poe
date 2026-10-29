@@ -44,4 +44,5 @@
   <string name="register_button">IKWADISE AKHAUNTE</string>
   <string name="back_to_login">[ BOELA KO GO TSENA ]</string>
   <string name="back">[ BOELA MORAGO ]</string>
+    <string name="font_size">Bogolo jwa Mokwalo</string>
 </resources>

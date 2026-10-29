@@ -3,6 +3,7 @@ package com.darkforge.bloodsouls
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -43,6 +44,9 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var databaseHelper: DatabaseHelper
+    private var currentScreenView: View? = null
+    private var ourFontSize = 14f
+
 
     override fun exit() {
         Log.i(TAG, "LibGDX exit callback received.")
@@ -117,6 +121,7 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.i(TAG, "onCreate initializing MainActivity...")
         settingsManager = SettingsManager(this)
+        ourFontSize = settingsManager.fontSize
         progressManager = UserProgressManager(this)
 
         super.onCreate(savedInstanceState)
@@ -154,6 +159,8 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
         val inflatedView = layoutInflater.inflate(layoutId, contentContainer, false)
         contentContainer.addView(inflatedView)
 
+        currentScreenView = inflatedView
+
         try {
             inflatedView.startAnimation(
                 AnimationUtils.loadAnimation(this, R.anim.fade_in)
@@ -172,6 +179,8 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
             GameScreen.ABOUT -> setupAbout(inflatedView)
             GameScreen.EXIT -> setupExit(inflatedView)
         }
+
+        updateFontSize()
     }
 
     private fun launchGameplayFragment() {
@@ -551,6 +560,7 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
         }
 
         setupLanguageButtons(view)
+        setupFontSize(view)
     }
 
     private fun syncSettingsToCloud() {
@@ -614,6 +624,40 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
                     syncSettingsToCloud()
                     recreate()
                 }
+            }
+        }
+    }
+
+    private fun updateFontSize() {
+        currentScreenView?.let { resizeAllTextViews(it) }}
+
+    private fun resizeAllTextViews(view: View) {
+        if (view is TextView) {
+            view.setTextSize(TypedValue.COMPLEX_UNIT_SP, ourFontSize)
+        }
+
+        if (view is ViewGroup) {
+            for (i in 0 until view.childCount) { resizeAllTextViews(view.getChildAt(i)) }
+        }
+    }
+
+    private fun setupFontSize(view: View){
+        val increase = view.findViewById<Button>(R.id.font_increase)
+        val decrease = view.findViewById<Button>(R.id.font_decrease)
+
+        increase.setOnClickListener {
+            if (ourFontSize < 40f) {
+                ourFontSize += 4f
+                settingsManager.fontSize = ourFontSize
+                updateFontSize()
+            }
+        }
+
+        decrease.setOnClickListener {
+            if (ourFontSize > 8f) {
+                ourFontSize -= 4f
+                settingsManager.fontSize = ourFontSize
+                updateFontSize()
             }
         }
     }
