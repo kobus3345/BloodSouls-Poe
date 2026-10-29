@@ -26,6 +26,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FirebaseAuth
+
 
 class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
 
@@ -81,6 +83,7 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
                         Log.i(TAG, "Google SSO Firebase auth successful. User: $username, UID: $userId")
                         settingsManager.loggedInUser = username
                         settingsManager.authToken = userId
+
                         navigate(GameScreen.MENU)
                     }
 
@@ -265,6 +268,18 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
                 txtStatus?.text = "Please fill in all fields"
                 return@setOnClickListener
             }
+            else if(!email.matches(Regex("^[A-Za-z0-9+_.-]+$|^[A-Za-z0-9+_.-]+@(gmail\\.com|hotmail\\.com|yahoo\\.com)$"))){
+                Log.w(TAG, "Registration validation failed: invalid input")
+                txtStatus?.visibility = View.VISIBLE
+                txtStatus?.text = "Please enter a valid username or email (gmail, hotmail, yahoo)"
+                return@setOnClickListener
+            }
+            else if(!rawPassword.matches(Regex("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#\$%^&+=!]).{8,}$"))){
+                Log.w(TAG, "Registration validation failed: invalid input")
+                txtStatus?.visibility = View.VISIBLE
+                txtStatus?.text = "Password must be at least 8 characters, include uppercase, lowercase, digit, and special character"
+                return@setOnClickListener
+            }
 
             if (rawPassword != confirmPassword) {
                 Log.w(TAG, "Registration validation failed: password mismatch")
@@ -289,6 +304,7 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
                     txtStatus?.text = "Account created!"
                     navigate(GameScreen.MENU)
                 }
+
 
                 override fun onError(errorMessage: String) {
                     Log.e(TAG, "Registration error callback: $errorMessage")
@@ -319,6 +335,7 @@ class MainActivity : FragmentActivity(), AndroidFragmentApplication.Callbacks {
         val about = view.findViewById<TextView>(R.id.menu_about)
         val exit = view.findViewById<TextView>(R.id.menu_exit)
         val userStatus = view.findViewById<TextView>(R.id.user_status)
+
 
         val loggedInUser = settingsManager.loggedInUser
         if (!loggedInUser.isNullOrEmpty()) {

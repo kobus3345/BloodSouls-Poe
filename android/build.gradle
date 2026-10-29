@@ -61,7 +61,9 @@ repositories {
 
 configurations { natives }
 
+
 dependencies {
+  testImplementation 'junit:junit:4.12'
   coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
   implementation platform('com.google.firebase:firebase-bom:33.9.0')
   implementation 'com.google.firebase:firebase-auth'
@@ -104,7 +106,6 @@ dependencies {
   natives "games.rednblack.miniaudio:gdx-miniaudio-platform:$miniaudioVersion:natives-armeabi-v7a"
   natives "games.rednblack.miniaudio:gdx-miniaudio-platform:$miniaudioVersion:natives-x86"
   natives "games.rednblack.miniaudio:gdx-miniaudio-platform:$miniaudioVersion:natives-x86_64"
-
 }
 
 // Called every time gradle gets executed, takes the native dependencies of
